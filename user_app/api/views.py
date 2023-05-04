@@ -9,8 +9,8 @@ from rest_framework import status
 def logout_view(request):
   
   if request.method == 'POST':
-    request.user.auth_token.delete() 
-    return Response(status=status.HTTP_200_OK)
+     request.user.auth_token.delete() 
+     return Response(status=status.HTTP_200_OK)
 
 @api_view(['POST',])
 def registration_view(request):
@@ -32,5 +32,4 @@ def registration_view(request):
     else:
       data = serializer.errors
       
-      
-    return Response(data)  
+    return Response(data, status=status.HTTP_201_CREATED)  
